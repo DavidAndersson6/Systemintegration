@@ -102,7 +102,7 @@ function getForecast() {
     .then((resp) => resp.json())
     .then(function (data) {
       console.log(data)
-      let forecasts = data.timeSeries[0].parameters;
+      let forecasts = data.timeSeries[2].parameters;
 
       let divtag = document.createElement('div');
 
