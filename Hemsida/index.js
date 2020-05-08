@@ -117,3 +117,32 @@ function getForecast() {
 
 }
 
+function getTime() {
+  const divTime = document.getElementById('divTime');
+  const uriTime = 'http://worldtimeapi.org/api/ip';
+
+  fetch(uriTime)
+
+    .then((resp) => resp.json())
+    .then(function (data) {
+      console.log(data)
+      let times = data.datetime;
+      
+
+      times = new Date();
+      
+      let divtag = document.createElement('div');
+
+      
+      divtag.innerHTML = `${'Time: ' + times.toLocaleTimeString()}`;
+      divTime.appendChild(divtag);
+
+
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+
+}
+
