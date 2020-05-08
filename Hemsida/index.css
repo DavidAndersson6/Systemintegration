@@ -1,0 +1,26 @@
+.forecast {
+    font-size: 40px;
+    position: fixed;
+    top: 40%;
+    right: 10%;
+}
+
+.time {
+    font-size: 40px;
+    position: fixed;
+    top: 20%;
+    right: 20%;
+}
+
+.departures {
+    position: fixed;
+    top: 50%;
+    left: 10%
+}
+
+.joke {
+    font-size: 30px;
+    position: fixed;
+    top: 80%;
+    left: 10%;
+}
