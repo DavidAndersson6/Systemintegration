@@ -14,16 +14,22 @@
 
     <h1>Avgångar tunnelbana Mariatorget</h1>
 
-    Namn: <input type="text" id="name" /> <a href="#" onclick="createVisitor()"> Checka in</a>
+    Namn: <input type="text" id="name" /> <a href="#" onclick="createVisitor()"> Visitor Check in</a>    
+    Namn: <input type="text" id="name" /> <a href="#" onclick="createEmployee()"> Employee Check in</a>
+
+    
+
 
     <div class="visitors" id="divVisitors"></div>
+    <div class="employees" id="divEmployees"></div>
     <div class="departures" id="divDepartures"></div>
     <div class="forecast" id="divForecast"> </div>
     <div class="time" id="divTime"></div>
     <div class="joke" id="divJokes"></div>
 
     <script>
-        loadData();
+        loadDataVisitors();
+        loadDataEmployees();
         trainTimes();
         getForecast();
         getTime();

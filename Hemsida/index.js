@@ -1,7 +1,8 @@
 const uriVisitors = 'https://5ea6a04884f6290016ba6f0e.mockapi.io/api/v1/visitors'
+const uriEmployees = 'https://5ea6a04884f6290016ba6f0e.mockapi.io/api/v1/employees'
+var visitorCounter = 0;
 
-
-function loadData() {
+function loadDataVisitors() {
 
     const datadiv = document.getElementById('divVisitors');
     datadiv.innerHTML = '';
@@ -11,7 +12,29 @@ function loadData() {
             return data.map(function(data) {
                 let divtag = document.createElement('div');
 
-                divtag.innerHTML = `${data.name} <a href ="#" onclick="deleteVisitor(${data.id})" > Checka Ut</a>`;
+                divtag.innerHTML = `${data.name} <a href ="#" onclick="deleteVisitor(${data.id})" > Checka Ut</a>` + " Visitors: " + visitorCounter;
+            
+            //divtag.innerHTML = `${data.name} - Status: ${data.status} - <a href ="#" onclick="changeStatus('På lunch', ${data.id})" >På lunch</a> - <a href ="#" onclick="changeStatus('I möte', ${data.id})" >I möte</a> - <a href ="#" onclick="changeStatus('Tillgänglig', ${data.id})" >Tillgänglig</a> - <a href ="#" onclick="deleteEmployee(${data.id})" >Checka ut</a>`;
+
+                datadiv.appendChild(divtag);
+          })
+        });
+}
+
+function loadDataEmployees() {
+
+    const datadiv = document.getElementById('divEmployees');
+    datadiv.innerHTML = '';
+    fetch(uriEmployees)
+        .then((resp) => resp.json())
+        .then(function(data) {
+            return data.map(function(data) {
+                let divtag = document.createElement('div');
+
+                divtag.innerHTML = `${data.name} <a href ="#" onclick="deleteEmployee(${data.id})" > Checka Ut</a>`;
+
+            //divtag.innerHTML = `${data.name} - Status: ${data.status} - <a href ="#" onclick="changeStatus('På lunch', ${data.id})" >På lunch</a> - <a href ="#" onclick="changeStatus('I möte', ${data.id})" >I möte</a> - <a href ="#" onclick="changeStatus('Tillgänglig', ${data.id})" >Tillgänglig</a> - <a href ="#" onclick="deleteEmployee(${data.id})" >Checka ut</a>`;
+
                 datadiv.appendChild(divtag);
             })
         });
@@ -22,6 +45,7 @@ function createVisitor() {
 
     const textInput = document.getElementById('name').value;
     var data = { name: textInput }
+    visitorCounter +=1;
 
     fetch(uriVisitors, {
             method: "POST",
@@ -39,14 +63,18 @@ function createVisitor() {
         .then(res => console.log(res))
 
     setTimeout(() => {
-        loadData();
+        loadDataVisitors();
     }, 500);
 
-    sendMail();
+   
 }
 
 function deleteVisitor(id) {
 
+    if(visitorCounter > 0) {
+        visitorCounter -=1;
+    }
+    
     fetch(uriVisitors + "/" + id, {
             method: "DELETE",
             mode: "cors",
@@ -62,7 +90,55 @@ function deleteVisitor(id) {
         .then(res => console.log(res))
 
     setTimeout(() => {
-        loadData();
+        loadDataVisitors();
+    }, 500);
+}
+
+function createEmployee() {
+
+
+    const textInput = document.getElementById('name').value;
+    var data = { name: textInput }
+
+    fetch(uriEmployees, {
+            method: "POST",
+            mode: "cors",
+            cache: "no-cache",
+            credentials: "same-origin",
+
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(res => console.log(res))
+
+    setTimeout(() => {
+        loadDataEmployees();
+    }, 500);
+
+}
+
+function deleteEmployee(id) {
+
+    fetch(uriEmployees + "/" + id, {
+            method: "DELETE",
+            mode: "cors",
+            cache: "no-cache",
+            credentials: "same-origin",
+
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+        })
+        .then(res => res.json())
+        .then(res => console.log(res))
+
+    setTimeout(() => {
+        loadDataEmployees();
     }, 500);
 }
 
