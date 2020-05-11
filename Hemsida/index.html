@@ -12,28 +12,51 @@
     <link rel="stylesheet" type="text/css" href="index.css">
     <script src="index.js" type="text/javascript"></script>
 
-    <h1>Avgångar tunnelbana Mariatorget</h1>
 
-    Namn: <input type="text" id="name" /> <a href="#" onclick="createVisitor()"> Visitor Check in</a>    
-    Namn: <input type="text" id="name" /> <a href="#" onclick="createEmployee()"> Employee Check in</a>
+
+    <p>Namn: <input type="text" id="nameVisitor" /> <a href="#" onclick="createVisitor()"> Visitor Check in <t></t> </a> </p>   
+    <p>Namn: <input type="text" id="nameEmployee" /> <a href="#" onclick="createEmployee()"> Employee Check in</a> </p>
 
     
-
+    <h1 class="titleMetroDepartures">Departures Metro</h1>
+    <h1 class="titleBusDepartures">Departures Buses</h1>
 
     <div class="visitors" id="divVisitors"></div>
     <div class="employees" id="divEmployees"></div>
-    <div class="departures" id="divDepartures"></div>
+    <div class="visitorCounter" id="divVisitorCounter"></div>
+    <div class="employeeCounter" id="divEmployeeCounter"></div>
+    <div class="metroDepartures" id="divMetroDepartures"></div>
+   <div class="busDepartures" id="divBusDepartures"></div>
     <div class="forecast" id="divForecast"> </div>
     <div class="time" id="divTime"></div>
     <div class="joke" id="divJokes"></div>
+    <div id="time" class="time"></div>
+    <div id="buses" class="busDepartures"></div>
+    <div id="metros" class="metroDepartures"></div>
 
     <script>
+
+
+   
+var myVar = setInterval(getTime, 1000);
+
         loadDataVisitors();
         loadDataEmployees();
-        trainTimes();
         getForecast();
-        getTime();
         getJoke();
+   
+       (function runMetro(){
+       metroTimes();
+       setInterval(runMetro, 40000)
+  })();
+     
+     (function runBus(){
+        busTimes();
+       setInterval(runBus, 40000)
+     })();
+
+
+
     </script>
 
 </body>

@@ -1,26 +1,97 @@
+body{
+    
+    background-image: url("backgroundsea.jpg");
+
+}
+
+.visitors {
+
+    position: fixed;
+    top: 30%;
+    right: 70%;
+}
+
+.visitorName {
+    position: fixed;
+    top:5%;
+    right: 70%;
+
+}
+.employees {
+
+    position: fixed;
+    top: 30%;
+    right: 88%;
+
+}
+
+.visitorCounter {
+   
+    font-size: 20px;
+    position: fixed;
+    top: 25%;
+    right: 65%;
+
+}
+
+
+.employeeCounter {
+   
+    font-size: 20px;
+    position: fixed;
+    top: 25%;
+    right: 82%;
+
+}
+
 .forecast {
     font-size: 40px;
     position: fixed;
-    top: 40%;
+    top: 10%;
     right: 10%;
 }
 
 .time {
     font-size: 40px;
     position: fixed;
-    top: 20%;
-    right: 20%;
+    top: 10%;
+    right: 50%;
 }
 
-.departures {
+.metroDepartures {
     position: fixed;
-    top: 50%;
-    left: 10%
+    top: 30%;
+    left: 75%
+}
+
+.busDepartures {
+
+    position: fixed;
+    top:30%;
+    left: 85%;
+}
+
+.titleMetroDepartures {
+
+    font-size: 15px;
+    position: fixed;
+    top: 25%;
+    left: 75%;
+
+}
+
+.titleBusDepartures {
+
+    font-size: 15px;
+    position: fixed;
+    top: 25%;
+    left: 85%;
+
 }
 
 .joke {
     font-size: 30px;
-    position: fixed;
     top: 80%;
-    left: 10%;
+    left: 20%;
+    position: fixed;
 }
