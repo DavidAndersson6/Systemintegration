@@ -22,7 +22,7 @@ function loadDataVisitors() {
                     
         
 
-                divtag.innerHTML = `${data.name} <a href ="#" onclick="deleteVisitor(${data.id})" > Checka Ut</a>`;
+                divtag.innerHTML = `${data.name} <a href ="#" onclick="deleteVisitor(${data.id})" > Check Out</a>`;
             
                 document.getElementById("divVisitorCounter").innerHTML = "Visitors in the building right now: " + visitorCounter;
 
@@ -48,7 +48,7 @@ function loadDataEmployees() {
 
                 
 
-                divtag.innerHTML = `${data.name} <a href ="#" onclick="deleteEmployee(${data.id})" > Checka Ut</a>`;
+                divtag.innerHTML = `${data.name} <a href ="#" onclick="deleteEmployee(${data.id})" > Check Out</a>`;
 
                 document.getElementById("divEmployeeCounter").innerHTML = "Employees in the building right now: " + employeeCounter;
            
@@ -264,16 +264,19 @@ function getTime() {
 
             times = new Date();
             var currentTime = times.toLocaleTimeString();
-           var hours = times.getHours();
-            var minutes = times.getMinutes();
-           var seconds = times.getSeconds();
+         //  var hours = times.getHours();
+          //  var minutes = times.getMinutes();
+         //  var seconds = times.getSeconds();
         let divtag = document.createElement('div');
 
 
-           //divtag.innerHTML = `${'Time: ' + times.toLocaleTimeString()}`;
-          
+         
+
            document.getElementById("time").innerHTML = currentTime;
-          // document.getElementById("time").divtag.innerHTML = times.toLocaleTimeString();
+
+             //divtag.innerHTML = `${'Time: ' + times.toLocaleTimeString()}`;
+            // document.getElementById("time").divtag.innerHTML = times.toLocaleTimeString();
+          
            divTime.appendChild(divtag);
         })
         .catch(function(error) {
